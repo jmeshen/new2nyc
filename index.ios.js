@@ -29,6 +29,11 @@ export default class new2nyc extends Component {
         name: 'Empire State Building',
         lat: 40.7484,
         long: -73.9857,
+      },
+      {
+        name: 'Citi Field',
+        lat: 40.7571,
+        long: -73.8458,
       }]
     };
     this._setLocation = this._setLocation.bind(this);
@@ -76,6 +81,10 @@ export default class new2nyc extends Component {
               <TouchableOpacity
                 onPress={this._clickableLocation.bind(this, 'Empire State Building')}>
                 <Text>Empire State Building</Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                onPress={this._clickableLocation.bind(this, 'Citi Field')}>
+                <Text>Citi Field</Text>
               </TouchableOpacity>
             </View>
           </TabBarIOS.Item>
