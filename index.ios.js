@@ -37,6 +37,7 @@ export default class new2nyc extends Component {
       }]
     };
     this._setLocation = this._setLocation.bind(this);
+    // this._clickableLocation = this._clickableLocation.bind(this);
   }
 
   componentWillMount() {
