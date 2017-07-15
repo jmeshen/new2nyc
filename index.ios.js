@@ -18,8 +18,28 @@ export default class new2nyc extends Component {
   constructor() {
     super()
     this.state = {
-      selectedTab: 0
+      selectedTab: 0,
+      currentLat: 0,
+      currentLong: 0,
+      places: {
+        name: 'New York City',
+        lat: -73.9857,
+        long: 40.7484
+      }
     };
+    this._setLocation = this._setLocation.bind(this);
+  }
+
+  componentWillMount() {
+    navigator.geolocation.requestAuthorization();
+    navigator.geolocation.getCurrentPosition((position) => this._setLocation(position.coords.latitude, position.coords.longitude));
+  }
+
+  _setLocation(lat, long) {
+    this.setState({
+      currentLat: lat,
+      currentLong: long
+    });
   }
 
   render() {
@@ -30,11 +50,11 @@ export default class new2nyc extends Component {
             selected={this.state.selectedTab === 0}>
             <MapView
               style={styles.map}
-              initialRegion={{
-                latitude: 37.78825,
-                longitude: -122.4324,
-                latitudeDelta: 0.0922,
-                longitudeDelta: 0.0421,
+              region={{
+                latitude: this.state.currentLat,
+                longitude: this.state.currentLong,
+                latitudeDelta: 0.005,
+                longitudeDelta: 0.2
               }}
             />
           </TabBarIOS.Item>

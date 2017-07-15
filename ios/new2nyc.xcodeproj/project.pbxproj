@@ -415,6 +415,13 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		022C0FF81F19E3A000B0F24C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		139105B71AF99BAD00B5F7CC /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -519,6 +526,7 @@
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* new2nycTests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
+				022C0FF81F19E3A000B0F24C /* Frameworks */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -622,6 +630,16 @@
 					00E356ED1AD99517003FC87E = {
 						CreatedOnToolsVersion = 6.2;
 						TestTargetID = 13B07F861A680F5B00A75B9A;
+					};
+					13B07F861A680F5B00A75B9A = {
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Maps.iOS = {
+								enabled = 0;
+							};
+						};
 					};
 					2D02E47A1E0B4A5D006451C7 = {
 						CreatedOnToolsVersion = 8.2.1;
