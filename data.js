@@ -1,5 +1,5 @@
-const countries = {
-  dominicanRepublic: {
+const countries = [
+  {
     title: 'Dominican Republic',
     consulate: {
       lat: 40.757253,
@@ -7,7 +7,7 @@ const countries = {
     },
     addlPlaces: []
   },
-  china: {
+  {
     title: 'China',
     consulate: {
       lat: 40.762193,
@@ -15,7 +15,7 @@ const countries = {
     },
     addlPlaces: []
   },
-  mexico: {
+  {
     title: 'Mexico',
     consulate: {
       lat: 40.750821,
@@ -23,7 +23,7 @@ const countries = {
     },
     addlPlaces: []
   },
-  jamaica: {
+  {
     title: 'Jamaica',
     consulate: {
       lat: 40.754248,
@@ -31,7 +31,7 @@ const countries = {
     },
     addlPlaces: []
   },
-  guyana: {
+  {
     title: 'Guyana',
     consulate: {
       lat: 40.755023,
@@ -39,7 +39,7 @@ const countries = {
     },
     addlPlaces: []
   },
-  ecuador: {
+  {
     title: 'Ecuador',
     consulate: {
       lat: 40.746451,
@@ -47,7 +47,7 @@ const countries = {
     },
     addlPlaces: []
   },
-  haiti: {
+  {
     title: 'Haiti',
     consulate: {
       lat: 40.750848,
@@ -55,7 +55,7 @@ const countries = {
     },
     addlPlaces: []
   },
-  trinidad: {
+  {
     title: 'Trindad & Tobago',
     consulate: {
       lat: 40.706609,
@@ -63,7 +63,7 @@ const countries = {
     },
     addlPlaces: []
   },
-  india: {
+  {
     title: 'India',
     consulate: {
       lat: 40.767314,
@@ -71,14 +71,14 @@ const countries = {
     },
     addlPlaces: []
   },
-  russia: {
+  {
     title: 'Russia',
     consulate: {
       lat: 40.784511,
       long: -73.957008
     },
     addlPlaces: []
-  },
-}
+  }
+]
 
 export default countries;
