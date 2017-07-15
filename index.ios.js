@@ -11,9 +11,12 @@ import {
   Text,
   View,
   TabBarIOS,
-  TouchableOpacity
+  TouchableOpacity,
+  Picker
 } from 'react-native';
 import MapView from 'react-native-maps';
+import Autocomplete from 'react-native-autocomplete-input';
+import countryData from './data';
 
 export default class new2nyc extends Component {
   constructor() {
@@ -24,17 +27,20 @@ export default class new2nyc extends Component {
       currentLong: 0,
       latDelta: 0.005,
       longDelta: 0.2,
-      places:
-      [{
-        name: 'Empire State Building',
-        lat: 40.7484,
-        long: -73.9857,
-      },
-      {
-        name: 'Citi Field',
-        lat: 40.7571,
-        long: -73.8458,
-      }]
+      places: [
+        {
+          name: 'Empire State Building',
+          lat: 40.7484,
+          long: -73.9857,
+        },
+        {
+          name: 'Citi Field',
+          lat: 40.7571,
+          long: -73.8458,
+        }
+      ],
+      countries: countryData,
+      query: ''
     };
     this._setLocation = this._setLocation.bind(this);
   }
@@ -70,7 +76,19 @@ export default class new2nyc extends Component {
     });
   }
 
+  findCountry(query) {
+    if (query === '') {
+      return [];
+    }
+
+    const { countries } = this.state;
+    const regex = new RegExp(`${query.trim()}`, 'i');
+    return countries.filter(country => country.title.search(regex) >= 0);
+  }
+
   render() {
+    const { query } = this.state;
+    const country = this.findCountry(query);
     return (
         <TabBarIOS>
           <TabBarIOS.Item
@@ -78,6 +96,24 @@ export default class new2nyc extends Component {
             selected={this.state.selectedTab === 0}
             onPress={this._handleTabChange.bind(this, 0)}>
             <View style={styles.container}>
+              <Text>Where you from</Text>
+              <Autocomplete
+                data={country}
+                defaultValue={query}
+                onChangeText={text => this.setState({ query: text })}
+                renderItem={({ title, consulate }) => (
+                  <TouchableOpacity onPress={() => {
+                      this.setState({ query: title })
+                      this._handleTabChange(1)
+                      this._setLocation(consulate.lat, consulate.long)
+                    }
+                  }>
+                    <Text>
+                      {title}
+                    </Text>
+                  </TouchableOpacity>
+                )}
+              />
               <TouchableOpacity
                 onPress={() => {
                   this._clickableLocation('Empire State Building')
@@ -116,16 +152,6 @@ export default class new2nyc extends Component {
 const styles = StyleSheet.create({
   container: {
     marginTop: 25
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
   },
   map: {
     position: 'absolute',
