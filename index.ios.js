@@ -79,11 +79,17 @@ export default class new2nyc extends Component {
             onPress={this._handleTabChange.bind(this, 0)}>
             <View style={styles.container}>
               <TouchableOpacity
-                onPress={this._clickableLocation.bind(this, 'Empire State Building')}>
+                onPress={() => {
+                  this._clickableLocation('Empire State Building')
+                  this._handleTabChange(1)
+                }}>
                 <Text>Empire State Building</Text>
               </TouchableOpacity>
               <TouchableOpacity
-                onPress={this._clickableLocation.bind(this, 'Citi Field')}>
+                onPress={() => {
+                  this._clickableLocation('Citi Field')
+                  this._handleTabChange(1)
+                }}>
                 <Text>Citi Field</Text>
               </TouchableOpacity>
             </View>
