@@ -1,83 +1,56 @@
+import {
+  dominicanRepublic,
+  china,
+  mexico,
+  jamaica,
+  guyana,
+  ecuador,
+  haiti,
+  trinidad,
+  india,
+  russia
+} from './places';
+
 const countries = [
   {
     title: 'Dominican Republic',
-    consulate: {
-      lat: 40.757253,
-      long: -73.986768
-    },
-    addlPlaces: []
+    places: dominicanRepublic
   },
   {
     title: 'China',
-    consulate: {
-      lat: 40.762193,
-      long: -74.000577
-    },
-    addlPlaces: []
+    places: china
   },
   {
     title: 'Mexico',
-    consulate: {
-      lat: 40.750821,
-      long: -73.979851
-    },
-    addlPlaces: []
+    places: mexico
   },
   {
     title: 'Jamaica',
-    consulate: {
-      lat: 40.754248,
-      long: -73.971434
-    },
-    addlPlaces: []
+    places: jamaica
   },
   {
     title: 'Guyana',
-    consulate: {
-      lat: 40.755023,
-      long:-73.992850
-    },
-    addlPlaces: []
+    places: guyana
   },
   {
     title: 'Ecuador',
-    consulate: {
-      lat: 40.746451,
-      long: -73.897262
-    },
-    addlPlaces: []
+    places: ecuador
   },
   {
     title: 'Haiti',
-    consulate: {
-      lat: 40.750848,
-      long: -73.971874
-    },
-    addlPlaces: []
+    places: haiti
   },
   {
     title: 'Trindad & Tobago',
-    consulate: {
-      lat: 40.706609,
-      long: -74.006250
-    },
-    addlPlaces: []
+    places: trinidad
   },
   {
     title: 'India',
-    consulate: {
-      lat: 40.767314,
-      long: -73.970006
-    },
-    addlPlaces: []
+    places: india
   },
   {
     title: 'Russia',
-    consulate: {
-      lat: 40.784511,
-      long: -73.957008
-    },
-    addlPlaces: []
+    places: russia
   }
 ]
 
