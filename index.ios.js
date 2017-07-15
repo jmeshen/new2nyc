@@ -16,7 +16,7 @@ import {
 } from 'react-native';
 import MapView from 'react-native-maps';
 import Autocomplete from 'react-native-autocomplete-input';
-import countryData from './data';
+import countries from './data';
 
 export default class new2nyc extends Component {
   constructor() {
@@ -27,25 +27,15 @@ export default class new2nyc extends Component {
       currentLong: 0,
       latDelta: 0.005,
       longDelta: 0.2,
-      places: [
-        {
-          name: 'Empire State Building',
-          lat: 40.7484,
-          long: -73.9857,
-        },
-        {
-          name: 'Citi Field',
-          lat: 40.7571,
-          long: -73.8458,
-        }
-      ],
-      countries: countryData,
+      markers: [],
+      countries: countries,
       query: ''
     };
     this._setLocation = this._setLocation.bind(this);
   }
 
   componentWillMount() {
+    console.log(countries);
     navigator.geolocation.requestAuthorization();
     navigator.geolocation.getCurrentPosition((position) => this._setLocation(position.coords.latitude, position.coords.longitude));
   }
@@ -61,6 +51,7 @@ export default class new2nyc extends Component {
     this.setState({
       selectedTab: num
     });
+    console.log(this.state);
   }
 
   _clickableLocation(place){
@@ -101,11 +92,11 @@ export default class new2nyc extends Component {
                 data={country}
                 defaultValue={query}
                 onChangeText={text => this.setState({ query: text })}
-                renderItem={({ title, consulate }) => (
+                renderItem={({ title, places }) => (
                   <TouchableOpacity onPress={() => {
                       this.setState({ query: title })
+                      this.setState({ markers: places })
                       this._handleTabChange(1)
-                      this._setLocation(consulate.lat, consulate.long)
                     }
                   }>
                     <Text>
@@ -114,20 +105,6 @@ export default class new2nyc extends Component {
                   </TouchableOpacity>
                 )}
               />
-              <TouchableOpacity
-                onPress={() => {
-                  this._clickableLocation('Empire State Building')
-                  this._handleTabChange(1)
-                }}>
-                <Text>Empire State Building</Text>
-              </TouchableOpacity>
-              <TouchableOpacity
-                onPress={() => {
-                  this._clickableLocation('Citi Field')
-                  this._handleTabChange(1)
-                }}>
-                <Text>Citi Field</Text>
-              </TouchableOpacity>
             </View>
           </TabBarIOS.Item>
           <TabBarIOS.Item
@@ -142,7 +119,15 @@ export default class new2nyc extends Component {
                 latitudeDelta: this.state.latDelta,
                 longitudeDelta: this.state.longDelta
               }}
-            />
+            >
+              {this.state.markers.map(marker => (
+                <MapView.Marker
+                  key={marker.title}
+                  coordinate={marker.latlng}
+                  title={marker.title}
+                />
+              ))}
+            </MapView>
           </TabBarIOS.Item>
         </TabBarIOS>
     );
