@@ -10,7 +10,8 @@ import {
   StyleSheet,
   Text,
   View,
-  TabBarIOS
+  TabBarIOS,
+  TouchableOpacity
 } from 'react-native';
 import MapView from 'react-native-maps';
 
@@ -21,11 +22,14 @@ export default class new2nyc extends Component {
       selectedTab: 0,
       currentLat: 0,
       currentLong: 0,
-      places: {
-        name: 'New York City',
-        lat: -73.9857,
-        long: 40.7484
-      }
+      latDelta: 0.005,
+      longDelta: 0.2,
+      places:
+      [{
+        name: 'Empire State Building',
+        lat: 40.7484,
+        long: -73.9857,
+      }]
     };
     this._setLocation = this._setLocation.bind(this);
   }
@@ -42,26 +46,52 @@ export default class new2nyc extends Component {
     });
   }
 
+  _handleTabChange(num){
+    this.setState({
+      selectedTab: num
+    });
+  }
+
+  _clickableLocation(place){
+    this.state.places.forEach(elem => {
+      if(elem.name === place) {
+        this.setState({
+          currentLat: elem.lat,
+          currentLong: elem.long,
+          latDelta: 0.002,
+          longDelta: 0.005
+        })
+      }
+    });
+  }
+
   render() {
     return (
         <TabBarIOS>
           <TabBarIOS.Item
             systemIcon="favorites"
-            selected={this.state.selectedTab === 0}>
+            selected={this.state.selectedTab === 0}
+            onPress={this._handleTabChange.bind(this, 0)}>
+            <View style={styles.container}>
+              <TouchableOpacity
+                onPress={this._clickableLocation.bind(this, 'Empire State Building')}>
+                <Text>Empire State Building</Text>
+              </TouchableOpacity>
+            </View>
+          </TabBarIOS.Item>
+          <TabBarIOS.Item
+            systemIcon="featured"
+            selected={this.state.selectedTab === 1}
+            onPress={this._handleTabChange.bind(this, 1)}>
             <MapView
               style={styles.map}
               region={{
                 latitude: this.state.currentLat,
                 longitude: this.state.currentLong,
-                latitudeDelta: 0.005,
-                longitudeDelta: 0.2
+                latitudeDelta: this.state.latDelta,
+                longitudeDelta: this.state.longDelta
               }}
             />
-          </TabBarIOS.Item>
-          <TabBarIOS.Item
-            systemIcon="featured"
-            selected={this.state.selectedTab === 1}>
-
           </TabBarIOS.Item>
         </TabBarIOS>
     );
@@ -70,10 +100,7 @@ export default class new2nyc extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    marginTop: 25
   },
   welcome: {
     fontSize: 20,
@@ -87,6 +114,7 @@ const styles = StyleSheet.create({
   },
   map: {
     position: 'absolute',
+    marginTop: 25,
     top: 0,
     left: 0,
     right: 0,
