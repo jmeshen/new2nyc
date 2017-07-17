@@ -1,5 +1,0 @@
-dependencies: \
-  /Users/kelvinator/Projects/new2nyc/node_modules/react-native/React/Profiler/RCTFPSGraph.m \
-  /Users/kelvinator/Projects/new2nyc/node_modules/react-native/React/Profiler/RCTFPSGraph.h \
-  /Users/kelvinator/Projects/new2nyc/node_modules/react-native/React/Base/RCTDefines.h \
-  /Users/kelvinator/Projects/new2nyc/node_modules/react-native/React/Base/RCTAssert.h
