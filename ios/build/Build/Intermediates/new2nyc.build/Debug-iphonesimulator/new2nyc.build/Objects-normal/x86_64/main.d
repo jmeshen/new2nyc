@@ -1,2 +1,2 @@
-dependencies: /Users/kelvinator/Projects/new2nyc/ios/new2nyc/main.m \
-  /Users/kelvinator/Projects/new2nyc/ios/new2nyc/AppDelegate.h
+dependencies: /Users/jmeshen/Code/new2nyc/ios/new2nyc/main.m \
+  /Users/jmeshen/Code/new2nyc/ios/new2nyc/AppDelegate.h

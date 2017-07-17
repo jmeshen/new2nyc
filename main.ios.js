@@ -83,8 +83,9 @@ export default class Main extends Component {
           selected={this.state.selectedTab === 0}
           onPress={this._handleTabChange.bind(this, 0)}>
           <View style={styles.container}>
-            <Text>Where you from</Text>
+            <Text style={styles.inputLabel}>What country are you from?</Text>
             <Autocomplete
+              style={styles.input}
               data={country}
               defaultValue={query}
               onChangeText={text => this.setState({ query: text })}
@@ -109,6 +110,7 @@ export default class Main extends Component {
           onPress={this._handleTabChange.bind(this, 1)}>
           <MapView
             style={styles.map}
+            showsUserLocation={true}
             region={{
               latitude: this.state.currentLat,
               longitude: this.state.currentLong,
@@ -132,7 +134,17 @@ export default class Main extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 25
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  inputLabel: {
+    margin: 10,
+    fontSize: 20
+  },
+  input: {
+    margin: 10,
+    width: 300
   },
   map: {
     position: 'absolute',

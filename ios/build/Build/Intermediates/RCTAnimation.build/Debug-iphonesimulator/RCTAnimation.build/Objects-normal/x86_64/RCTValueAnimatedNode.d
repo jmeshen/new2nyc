@@ -1,4 +1,4 @@
 dependencies: \
-  /Users/kelvinator/Projects/new2nyc/node_modules/react-native/Libraries/NativeAnimation/Nodes/RCTValueAnimatedNode.m \
-  /Users/kelvinator/Projects/new2nyc/node_modules/react-native/Libraries/NativeAnimation/Nodes/RCTValueAnimatedNode.h \
-  /Users/kelvinator/Projects/new2nyc/node_modules/react-native/Libraries/NativeAnimation/Nodes/RCTAnimatedNode.h
+  /Users/jmeshen/Code/new2nyc/node_modules/react-native/Libraries/NativeAnimation/Nodes/RCTValueAnimatedNode.m \
+  /Users/jmeshen/Code/new2nyc/node_modules/react-native/Libraries/NativeAnimation/Nodes/RCTValueAnimatedNode.h \
+  /Users/jmeshen/Code/new2nyc/node_modules/react-native/Libraries/NativeAnimation/Nodes/RCTAnimatedNode.h
